@@ -1,40 +1,50 @@
 const fita = document.getElementById('fita');
 const btn = document.getElementById('executarFita');
 
-let estados = [
-	{
-		name: 'A',
-		inicial: true,
-		final: true
-	},
-	{
-		name: 'B'
-	},
-	{
-		name: 'C'
+let estados = {
+	'A': { inicial: true},
+	'B': {},
+	'C': {},
+	'D': { final: true },
+	'E': {}
+};
 
-	}
-];
-
-let transicoes = [
-	{
-		name: '1',
-		inicio: estados[0],
-		fim: estados[1]
-	},
-	{
-		name: '2',
-		inicio: estados[1],
-		fim: estados[2]
-	},
-	{
-		name: '3',
-		inicio: estados[2],
-		fim: estados[0]
-	}
-]
+/*let transicoes = [
+	'a': [
+		{
+			inicio: estados.B,
+			fim: estados.A
+		},
+		{
+			inicio: estados.B,
+			fim: estados.D
+		}
+		{
+			inicio: estados.C,
+			fim: estados.A
+		},
+		{
+			inicio: estados.B,
+			fim: estados.D
+		}
+	],
+	'b': [
+		{
+			inicio: estados.A,
+			fim: estados.C
+		},
+		{
+			inicio: estados.B,
+			fim: estados.D
+		}
+	]
+]*/
 
 let f = [];
+
+for((chave, valor) of estados){
+	console.log(chave, valor)
+}
 
 
 function executarFita(){
@@ -50,7 +60,7 @@ function executarFita(){
 }
 
 function checaEstado(pos, fita) {
-	
+
 }
 
 function getTransicao(name){
