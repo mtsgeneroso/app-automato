@@ -1,70 +1,115 @@
 const fita = document.getElementById('fita');
 const btn = document.getElementById('executarFita');
+const mensagem = document.getElementById('mensagem');
 
-let estados = {
-	'A': { inicial: true},
-	'B': {},
-	'C': {},
-	'D': { final: true },
-	'E': {}
-};
+const estados = [
+	{
+		chave: 'A',
+		inicial: true
+	},
+	{
+		chave: 'B'
+	},
+	{
+		chave: 'C'
+	},
+	{
+		chave: 'D',
+		final: true
+	},
+	{
+		chave: 'E'
+	}
+]
 
-/*let transicoes = [
-	'a': [
-		{
-			inicio: estados.B,
-			fim: estados.A
-		},
-		{
-			inicio: estados.B,
-			fim: estados.D
-		}
-		{
-			inicio: estados.C,
-			fim: estados.A
-		},
-		{
-			inicio: estados.B,
-			fim: estados.D
-		}
-	],
-	'b': [
-		{
-			inicio: estados.A,
-			fim: estados.C
-		},
-		{
-			inicio: estados.B,
-			fim: estados.D
-		}
-	]
-]*/
-
-let f = [];
-
-for((chave, valor) of estados){
-	console.log(chave, valor)
-}
+const transicoes = [
+	{
+		nome: 'b',
+		inicio: estados[0],
+		fim: estados[2]
+	},
+	{
+		nome: 'b',
+		inicio: estados[2],
+		fim: estados[1]
+	},
+	{
+		nome: 'b',
+		inicio: estados[1],
+		fim: estados[3]
+	},
+	{
+		nome: 'b',
+		inicio: estados[3],
+		fim: estados[3]
+	},
+	{
+		nome: 'b',
+		inicio: estados[4],
+		fim: estados[1]
+	},
+	{
+		nome: 'a',
+		inicio: estados[1],
+		fim: estados[0]
+	},
+	{
+		nome: 'a',
+		inicio: estados[2],
+		fim: estados[4]
+	},
+	{
+		nome: 'a',
+		inicio: estados[4],
+		fim: estados[4]
+	},
+	{
+		nome: 'a',
+		inicio: estados[3],
+		fim: estados[1]
+	}
+]
 
 
 function executarFita(){
 	let valida;
+	let posFita = 0;
+	let estadoAtual;
 	f = [...fita.value];
-	if(!getTransicao(fita[0]).inicio.inicial){
-		console.log('Inválido')
-	} 
+	estadoAtual = checarPosAtual(estados[0].chave, f[0]);
 
-	valida = checaEstado(0, f);
+	if(estadoAtual){
+		for(let i = 1; i < f.length; i++){
+			estadoAtual = checarPosAtual(estadoAtual.fim.chave, f[i]);
+			if (!estadoAtual) {
+				exibirMensagem('Sentença inválida')
+				return;
+			}
+		}
+
+
+		if(estadoAtual.fim.final){
+			exibirMensagem('Sentença válida')
+		} else {
+			exibirMensagem('Sentença inválida')
+		}
+
+	} else {
+		exibirMensagem('Sentença inválida')
+	}
+
 
 
 }
 
-function checaEstado(pos, fita) {
 
+function checarPosAtual(estadoAtual, simbolo){
+	return transicoes.filter(t => {
+		return t.nome == simbolo 
+		    && t.inicio.chave == estadoAtual
+	})[0]
 }
 
-function getTransicao(name){
-	return transicoes.filter(
-			(t) => t.name == name
-		)[0]
+function exibirMensagem(valor){
+	mensagem.innerText = valor;
 }
