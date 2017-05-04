@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Automato</title>
+	<style>
+		input {
+			width: 120px
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<label for="estados">Estados</label> <br>
+		<small>* Separe os estados por vírgula</small>
+	</div>
+	<input type="text" id="estados">
+	<br><br>
+
+	<div>
+		<label for="simbolosEntrada">Simbolos de entrada</label><br>
+		<small>* Separe os simbolos por vírgula</small>
+	</div>
+	<input type="text" id="simbolosEntrada">
+	<br><br>
+
+	<div>
+		<label for="estadoInicial">Estado inicial</label>
+	</div>
+	<input type="text" id="estadoInicial">
+	<br><br>
+
+	<div>
+		<label for="estadosFinais">Estados finais</label><br>
+		<small>* Separe os estados finais por vírgula</small>
+	</div>
+	<input type="text" id="estadosFinais">
+	<br><br><br>
+
+<button onclick="adicionaLinha()">+ Linha</button>
+<table border="1" cellspacing="0" id="listaTransicoes">
+	<thead>
+		<tr>
+			<th>
+				
+			</th>
+			<th>
+				Estado atual
+			</th>
+			<th>
+				
+			</th>
+			<th>
+				Simbolo
+			</th>
+			<th>
+				
+			</th>
+			<th>
+				Estado seguinte	
+			</th>
+			<th>
+				
+			</th>
+			<th>
+				Saída
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+<br>
+<br>
+
+<label>Fita</label>
+<input type="text" id="fita">
+<button id="" onclick="carregarCampos()">Executar</button>
+<p id="mensagem"></p>
+<img src=""/>
+<script src="app2.js"></script>
+</body>
+</html>
