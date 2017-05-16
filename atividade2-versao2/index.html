@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>AutomatosFinitos</title>
+		<style>
+			td input {
+				width: 40px;
+			}
+			td {
+			    text-align: center;
+			}
+			#result{
+				color:red;
+				border: solid 1px black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<label for="estados">Estados</label> <br>
+			<small>* Separe os estados por vírgula</small>
+		</div>
+		<input type="text" id="estados" required>
+		<br><br>
+
+		<div>
+			<label for="simbolosEntrada">Simbolos de entrada</label><br>
+			<small>* Separe os simbolos por vírgula</small>
+		</div>
+		<input type="text" id="simbolosEntrada">
+		<br><br>
+
+		<div>
+			<label for="estadoInicial">Estado inicial</label>
+		</div>
+		<input type="text" id="estadoInicial">
+		<br><br>
+
+		<div>
+			<label for="estadosFinais">Estados finais</label><br>
+			<small>* Separe os estados finais por vírgula</small>
+		</div>
+		<input type="text" id="estadosFinais">
+		<br>
+
+		<h3>Escreva as transições na tabela</h3>
+		<button onclick="adicionaLinha()">Adicionar Linha</button><br><br>
+
+		<table border="1" cellspacing="0" id="tabela">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Estado Atual</th>
+					<th></th>
+					<th>Simbolo</th>
+					<th></th>
+					<th>Estado Seguinte</th>
+					<th></th>
+					<th>Saída</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+		<br><br>
+		Fita:
+		<input type="text" name="fita" id="fita">
+		<button onclick="executaFita()">Executar</button><br><br>
+		
+		<div id="result">
+			<p style="color:black">Resultado:<p>
+
+		</div>
+
+		<script src="index.js"></script>
+	</body>
+</html>
+
